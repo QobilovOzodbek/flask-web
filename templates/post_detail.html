@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="post-detail">
+    <img src="{{ url_for('static', filename='uploads/' + post.image) }}" alt="Post image" class="img-fluid">
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.content }}</p>
+    <p>By {{ post.author }}</p>
+
+    <!-- Ijtimoiy media havolalari -->
+    <div class="social-links">
+        {% if post.github %}
+            <a href="{{ post.github }}" target="_blank" class="btn btn-outline-secondary">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+        {% endif %}
+        {% if post.youtube %}
+            <a href="{{ post.youtube }}" target="_blank" class="btn btn-outline-danger">
+                <i class="fab fa-youtube"></i> YouTube
+            </a>
+        {% endif %}
+        {% if post.telegram %}
+            <a href="{{ post.telegram }}" target="_blank" class="btn btn-outline-info">
+                <i class="fab fa-telegram-plane"></i> Telegram
+            </a>
+        {% endif %}
+        {% if post.instagram %}
+            <a href="{{ post.instagram }}" target="_blank" class="btn btn-outline-dark">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

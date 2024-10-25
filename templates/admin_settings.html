@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Settings{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Admin Login va Parolni Yangilash</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="username" class="form-label">Yangi Login</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Yangi Parol</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Yangilash</button>
+    </form>
+</div>
+{% endblock %}
