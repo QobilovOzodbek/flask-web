@@ -114,7 +114,8 @@ def delete_post(post_id):
     db.session.delete(post)
     db.session.commit()
     flash('Post muvaffaqiyatli o\'chirildi!', 'success')
-    return redirect(url_for('index'))
+    return redirect(url_for('view_post', post_id=post.id))
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -157,6 +158,13 @@ def admin_settings():
         return redirect(url_for('admin'))
 
     return render_template('admin_settings.html')
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+
 # Ma'lumotlar bazasini yaratish
 with app.app_context():
     db.create_all()
@@ -168,16 +176,6 @@ with app.app_context():
         db.session.add(admin)
         db.session.commit()
         print("Admin foydalanuvchi yaratildi: admin/admin")
-
-@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('login'))
-
-# Ma'lumotlar bazasini yaratish
-with app.app_context():
-    db.create_all()
 
 if __name__ == '__main__':
     app.run(debug=True)
